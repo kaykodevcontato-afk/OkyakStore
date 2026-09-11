@@ -211,10 +211,7 @@ function formatPrice(value) {
 
 function renderProducts() {
 
-  if (!productsContainer) {
-    console.error("Elemento #products não encontrado.");
-    return;
-  }
+  if (!productsContainer) return;
 
   const filteredProducts = products.filter(product => {
 
@@ -222,11 +219,9 @@ function renderProducts() {
       activeCategory === "Todos" ||
       product.category === activeCategory;
 
-    const text = `
-      ${product.name}
-      ${product.category}
-      ${product.description}
-    `.toLowerCase();
+    const text =
+      `${product.name} ${product.category} ${product.description}`
+        .toLowerCase();
 
     const matchesSearch =
       text.includes(searchTerm.toLowerCase());
@@ -236,7 +231,6 @@ function renderProducts() {
   });
 
 
-  // Nenhum resultado
   if (filteredProducts.length === 0) {
 
     productsContainer.innerHTML = `
@@ -249,64 +243,10 @@ function renderProducts() {
   }
 
 
-  // Criar produtos
   productsContainer.innerHTML = filteredProducts.map(product => {
 
-    // ==============================================
-    // SEM ESTOQUE
-    // ==============================================
-
-    if (!product.stock) {
-
-      return `
-        <article class="product out-of-stock">
-
-          <div class="product-image">
-            <div class="product-icon">
-              ${product.icon || "🎮"}
-            </div>
-
-            <span class="stock-badge">
-              SEM ESTOQUE
-            </span>
-          </div>
-
-          <span class="tag">
-            ${product.category}
-          </span>
-
-          <h3>
-            ${product.name}
-          </h3>
-
-          <p class="tag">
-            ${product.description}
-          </p>
-
-          <div class="price unavailable">
-            Indisponível
-          </div>
-
-          <button
-            class="btn add"
-            type="button"
-            disabled
-          >
-            🚫 Sem estoque
-          </button>
-
-        </article>
-      `;
-
-    }
-
-
-    // ==============================================
-    // DISPONÍVEL
-    // ==============================================
-
     return `
-      <article class="product available-product">
+      <article class="product ${product.stock ? "" : "out-of-stock"}">
 
         <div class="product-image">
 
@@ -321,11 +261,11 @@ function renderProducts() {
             class="product-icon image-fallback"
             style="display:none;"
           >
-            ${product.icon || "🎮"}
+            ${product.icon}
           </div>
 
-          <span class="stock-badge available">
-            DISPONÍVEL
+          <span class="stock-badge ${product.stock ? "available" : ""}">
+            ${product.stock ? "DISPONÍVEL" : "SEM ESTOQUE"}
           </span>
 
         </div>
@@ -342,17 +282,37 @@ function renderProducts() {
           ${product.description}
         </p>
 
-        <div class="price">
-          ${formatPrice(product.price)}
-        </div>
+        ${
+          product.stock
+          ?
+          `<div class="price">${formatPrice(product.price)}</div>`
+          :
+          `<div class="price unavailable">Indisponível</div>`
+        }
 
-        <button
-          class="btn add"
-          type="button"
-          onclick="addToCart(${product.id})"
-        >
-          🛒 Adicionar ao carrinho
-        </button>
+        ${
+          product.stock
+          ?
+          `
+          <button
+            class="btn add"
+            type="button"
+            onclick="addToCart(${product.id})"
+          >
+            🛒 Adicionar ao carrinho
+          </button>
+          `
+          :
+          `
+          <button
+            class="btn add"
+            type="button"
+            disabled
+          >
+            🚫 Sem estoque
+          </button>
+          `
+        }
 
       </article>
     `;
