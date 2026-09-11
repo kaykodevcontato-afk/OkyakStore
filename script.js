@@ -10,76 +10,140 @@
 
 const products = [
 
+  // ==================================================
   // XBOX — DISPONÍVEL
+  // ==================================================
+
   {
     id: 1,
     name: "Cartão-presente digital Xbox",
     category: "Xbox",
     value: "R$ 5,00",
     price: 7.00,
-    image: "https://m.media-amazon.com/images/I/51z5xQx7JVL._SL1000_.jpg",
+
+    image:
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Xbox_logo_(2019).svg",
+
     icon: "🎮",
-    description: "Cartão-presente Xbox com R$ 5,00 de saldo.",
+
+    description:
+      "Cartão-presente Xbox com R$ 5,00 de saldo.",
+
     stock: true
   },
 
+
+  // ==================================================
   // GOOGLE PLAY — SEM ESTOQUE
+  // ==================================================
+
   {
     id: 2,
     name: "Cartão-presente Google Play",
     category: "Google Play",
     value: "R$ 10,00",
     price: 12.00,
+
+    image:
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Google_Play.svg",
+
     icon: "▶️",
-    description: "Cartão-presente Google Play.",
+
+    description:
+      "Cartão-presente Google Play.",
+
     stock: false
   },
 
+
+  // ==================================================
   // STEAM — SEM ESTOQUE
+  // ==================================================
+
   {
     id: 3,
     name: "Cartão-presente Steam",
     category: "Steam",
     value: "R$ 10,00",
     price: 12.00,
+
+    image:
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Steam_icon_logo.svg",
+
     icon: "🎮",
-    description: "Cartão-presente Steam.",
+
+    description:
+      "Cartão-presente Steam.",
+
     stock: false
   },
 
+
+  // ==================================================
   // PLAYSTATION — SEM ESTOQUE
+  // ==================================================
+
   {
     id: 4,
     name: "Cartão-presente PlayStation",
     category: "PlayStation",
     value: "R$ 10,00",
     price: 12.00,
+
+    image:
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/PlayStation_logo.svg",
+
     icon: "🎮",
-    description: "Cartão-presente PlayStation.",
+
+    description:
+      "Cartão-presente PlayStation.",
+
     stock: false
   },
 
+
+  // ==================================================
   // ROBLOX — SEM ESTOQUE
+  // ==================================================
+
   {
     id: 5,
     name: "Cartão-presente Roblox",
     category: "Roblox",
     value: "R$ 10,00",
     price: 12.00,
-    icon: "🧱",
-    description: "Cartão-presente Roblox.",
+
+    image:
+      "https://commons.wikimedia.org/wiki/Special:Redirect/file/Roblox_Logo.svg",
+
+    icon: "⬜",
+
+    description:
+      "Cartão-presente Roblox.",
+
     stock: false
   },
 
+
+  // ==================================================
   // FREE FIRE — SEM ESTOQUE
+  // ==================================================
+
   {
     id: 6,
     name: "Gift Card Free Fire",
     category: "Free Fire",
     value: "R$ 10,00",
     price: 12.00,
+
+    image:
+      "https://upload.wikimedia.org/wikipedia/en/9/9a/Garena_Free_Fire_Logo.png",
+
     icon: "🔥",
-    description: "Gift Card para Free Fire.",
+
+    description:
+      "Gift Card para Free Fire.",
+
     stock: false
   }
 
