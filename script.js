@@ -1,24 +1,685 @@
-:root{
-  --bg:#070611;--panel:#111020;--panel2:#17152a;--text:#f6f3ff;--muted:#aaa5bd;
-  --pink:#ff2fd6;--purple:#8b5cf6;--cyan:#25d9ff;--line:rgba(255,255,255,.1);
+```javascript
+// ======================================================
+// OKYAK STORE — SCRIPT PRINCIPAL
+// Gift Cards • Busca • Filtros • Carrinho • WhatsApp
+// ======================================================
+
+// ======================================================
+// PRODUTOS
+// ======================================================
+
+const products = [
+  {
+    id: 1,
+    name: "Cartão-presente digital Xbox",
+    category: "Xbox",
+    value: "R$ 5,00",
+    price: 7.00,
+    icon: "🎮",
+    description: "Cartão-presente Xbox com R$ 5,00 de saldo."
+  }
+
+  // Novos produtos podem ser adicionados aqui depois.
+];
+
+
+// ======================================================
+// ELEMENTOS DO SITE
+// ======================================================
+
+const productsContainer = document.getElementById("products");
+const searchInput = document.getElementById("search");
+const filtersContainer = document.getElementById("filters");
+
+const cartButton = document.getElementById("openCart");
+const closeCartButton = document.getElementById("closeCart");
+const cart = document.getElementById("cart");
+const overlay = document.getElementById("overlay");
+
+const cartItemsContainer = document.getElementById("cartItems");
+const cartEmpty = document.getElementById("cartEmpty");
+const cartCount = document.getElementById("cartCount");
+const cartTotal = document.getElementById("cartTotal");
+
+const clearCartButton = document.getElementById("clearCart");
+const checkoutButton = document.getElementById("checkout");
+
+const customerModal = document.getElementById("customerModal");
+const closeModalButton = document.getElementById("closeModal");
+const orderForm = document.getElementById("orderForm");
+
+const customerName = document.getElementById("customerName");
+const customerPhone = document.getElementById("customerPhone");
+const customerNote = document.getElementById("customerNote");
+
+const yearElement = document.getElementById("year");
+
+
+// ======================================================
+// ESTADO
+// ======================================================
+
+let cartItems = [];
+let activeCategory = "Todos";
+let searchTerm = "";
+
+
+// ======================================================
+// FORMATAÇÃO DE PREÇO
+// ======================================================
+
+function formatPrice(value) {
+  return value.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+  });
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at 80% 0%,#24113c 0,transparent 32%),var(--bg);color:var(--text);line-height:1.5}
-a{text-decoration:none;color:inherit}.topbar{height:76px;position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:rgba(7,6,17,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
-.brand{display:flex;align-items:center;gap:10px}.brand-mark{font-size:30px;filter:drop-shadow(0 0 10px var(--pink))}.brand strong{display:block;letter-spacing:2px;font-size:18px}.brand small{display:block;color:var(--cyan);letter-spacing:4px;font-size:9px}
-nav{display:flex;gap:28px;color:var(--muted);font-size:14px}nav a:hover{color:#fff}
-.cart-button{border:1px solid var(--line);background:var(--panel);color:#fff;padding:10px 14px;border-radius:12px;cursor:pointer}.cart-button b{display:inline-grid;place-items:center;background:var(--pink);width:20px;height:20px;border-radius:50%;font-size:11px;margin-left:5px}
-.hero{min-height:620px;display:flex;align-items:center;justify-content:space-between;padding:70px 9%;gap:50px;overflow:hidden}.hero-content{max-width:700px}.eyebrow{color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:3px;margin-bottom:12px}.hero h1{font-size:clamp(42px,7vw,76px);line-height:1.02;letter-spacing:-3px}.hero h1 span{background:linear-gradient(90deg,var(--pink),var(--purple),var(--cyan));-webkit-background-clip:text;color:transparent}.hero p:not(.eyebrow){color:var(--muted);max-width:610px;margin:24px 0;font-size:17px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
-.btn{border:0;border-radius:12px;padding:13px 18px;font-weight:800;cursor:pointer;display:inline-block}.primary{color:#fff;background:linear-gradient(90deg,var(--pink),var(--purple));box-shadow:0 0 30px rgba(255,47,214,.2)}.ghost{border:1px solid var(--line);background:var(--panel);color:#fff}
-.hero-orb{width:290px;height:290px;border-radius:50%;display:grid;place-items:center;text-align:center;background:radial-gradient(circle,#35205a 0,#150d27 55%,transparent 70%);border:1px solid rgba(255,47,214,.25);box-shadow:0 0 80px rgba(139,92,246,.3);animation:float 4s ease-in-out infinite}.alien{font-size:100px;filter:drop-shadow(0 0 18px var(--cyan))}.hero-orb span{font-size:12px;letter-spacing:5px;color:var(--cyan);font-weight:800}
-@keyframes float{50%{transform:translateY(-12px)}}
-.section{padding:80px 8%}.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px}.section h2{font-size:38px;margin-bottom:22px}.search{width:min(330px,100%);background:var(--panel);border:1px solid var(--line);color:#fff;padding:13px 16px;border-radius:12px;outline:none}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}.filter{background:var(--panel);border:1px solid var(--line);color:var(--muted);padding:9px 13px;border-radius:999px;cursor:pointer}.filter.active,.filter:hover{background:linear-gradient(90deg,#70235f,#33235c);color:#fff;border-color:rgba(255,47,214,.4)}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.product{background:linear-gradient(145deg,var(--panel),#0c0b16);border:1px solid var(--line);border-radius:18px;padding:18px;transition:.2s}.product:hover{transform:translateY(-4px);border-color:rgba(37,217,255,.35);box-shadow:0 15px 35px rgba(0,0,0,.25)}.product-icon{height:100px;border-radius:14px;display:grid;place-items:center;font-size:48px;background:linear-gradient(135deg,#1d1730,#0d1428);margin-bottom:15px}.product h3{font-size:17px}.tag{color:var(--muted);font-size:12px}.price{font-size:20px;font-weight:900;margin:12px 0}.add{width:100%;background:#fff;color:#090711}.add:hover{background:var(--cyan)}
-.how{background:linear-gradient(180deg,transparent,rgba(139,92,246,.05),transparent)}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.steps article{background:var(--panel);border:1px solid var(--line);padding:22px;border-radius:16px}.steps span{color:var(--pink);font-weight:900}.steps h3{margin:10px 0 5px}.steps p{color:var(--muted);font-size:14px}.notice{margin-top:20px;padding:14px;border:1px solid rgba(255,193,7,.18);background:rgba(255,193,7,.05);border-radius:12px;color:#d9d3c3;font-size:13px}
-footer{padding:35px 8%;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:13px}footer strong{color:#fff}
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:29;opacity:0;pointer-events:none;transition:.25s}.overlay.show{opacity:1;pointer-events:auto}
-.cart{position:fixed;z-index:30;right:0;top:0;height:100vh;width:min(420px,100%);background:#0c0b15;border-left:1px solid var(--line);transform:translateX(100%);transition:.25s;display:flex;flex-direction:column}.cart.open{transform:translateX(0)}.cart-head{padding:22px;display:flex;justify-content:space-between;border-bottom:1px solid var(--line)}.cart-head button,.modal-close{background:none;border:0;color:#fff;font-size:20px;cursor:pointer}.cart-items{padding:18px;overflow:auto;flex:1}.cart-row{display:grid;grid-template-columns:1fr auto;gap:10px;padding:13px 0;border-bottom:1px solid var(--line)}.cart-row small{color:var(--muted)}.qty button{background:var(--panel2);color:#fff;border:1px solid var(--line);width:27px;height:27px;border-radius:7px;cursor:pointer}.cart-empty{text-align:center;color:var(--muted);padding:35px}.cart-footer{padding:20px;border-top:1px solid var(--line)}.total{display:flex;justify-content:space-between;font-size:18px;margin-bottom:15px}.whatsapp{width:100%;background:#20c66a;color:#06100a}.clear{width:100%;border:0;background:none;color:var(--muted);padding:12px;cursor:pointer}
-.modal{position:fixed;z-index:40;inset:0;display:none;place-items:center;background:rgba(0,0,0,.75);padding:20px}.modal.show{display:grid}.modal-box{position:relative;background:#0e0d18;border:1px solid var(--line);border-radius:18px;padding:28px;width:min(460px,100%);box-shadow:0 30px 100px #000}.modal-box h2{font-size:30px}.modal-box>p:not(.eyebrow){color:var(--muted);margin:7px 0 20px}.modal-close{position:absolute;right:18px;top:16px}form{display:grid;gap:14px}label{font-size:13px;color:#ddd}input,textarea{width:100%;margin-top:6px;background:var(--panel);border:1px solid var(--line);color:#fff;padding:12px;border-radius:10px;outline:none;font:inherit}
-@media(max-width:800px){nav{display:none}.hero{padding:55px 7%;text-align:center;flex-direction:column}.hero p:not(.eyebrow){margin-left:auto;margin-right:auto}.hero-orb{width:220px;height:220px}.section{padding:60px 6%}.section-head{align-items:stretch;flex-direction:column}.steps{grid-template-columns:1fr 1fr}footer{flex-direction:column}}
-@media(max-width:480px){.hero h1{letter-spacing:-2px}.steps{grid-template-columns:1fr}.cart-button span{display:none}}
+
+
+// ======================================================
+// MOSTRAR PRODUTOS
+// ======================================================
+
+function renderProducts() {
+
+  if (!productsContainer) return;
+
+  const filteredProducts = products.filter(product => {
+
+    const matchesCategory =
+      activeCategory === "Todos" ||
+      product.category === activeCategory;
+
+    const text =
+      `${product.name} ${product.category} ${product.description}`
+        .toLowerCase();
+
+    const matchesSearch =
+      text.includes(searchTerm.toLowerCase());
+
+    return matchesCategory && matchesSearch;
+  });
+
+
+  if (filteredProducts.length === 0) {
+
+    productsContainer.innerHTML = `
+      <div style="
+        grid-column:1/-1;
+        text-align:center;
+        padding:40px;
+        color:#aaa5bd;
+      ">
+        🔎 Nenhum Gift Card encontrado.
+      </div>
+    `;
+
+    return;
+  }
+
+
+  productsContainer.innerHTML = filteredProducts.map(product => {
+
+    return `
+      <article class="product">
+
+        <div class="product-icon">
+          ${product.icon}
+        </div>
+
+        <span class="tag">
+          ${product.category}
+        </span>
+
+        <h3>
+          ${product.name}
+        </h3>
+
+        <p class="tag">
+          ${product.description}
+        </p>
+
+        <div class="price">
+          ${formatPrice(product.price)}
+        </div>
+
+        <button
+          class="btn add"
+          onclick="addToCart(${product.id})"
+        >
+          🛒 Adicionar ao carrinho
+        </button>
+
+      </article>
+    `;
+
+  }).join("");
+}
+
+
+// ======================================================
+// FILTROS
+// ======================================================
+
+if (filtersContainer) {
+
+  filtersContainer.addEventListener("click", function(event) {
+
+    const button = event.target.closest(".filter");
+
+    if (!button) return;
+
+    activeCategory = button.dataset.category;
+
+    document.querySelectorAll(".filter").forEach(filter => {
+      filter.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    renderProducts();
+  });
+
+}
+
+
+// ======================================================
+// BUSCA
+// ======================================================
+
+if (searchInput) {
+
+  searchInput.addEventListener("input", function() {
+
+    searchTerm = this.value.trim();
+
+    renderProducts();
+
+  });
+
+}
+
+
+// ======================================================
+// ADICIONAR AO CARRINHO
+// ======================================================
+
+function addToCart(productId) {
+
+  const product = products.find(
+    item => item.id === productId
+  );
+
+  if (!product) return;
+
+
+  const existingItem = cartItems.find(
+    item => item.id === productId
+  );
+
+
+  if (existingItem) {
+
+    existingItem.quantity += 1;
+
+  } else {
+
+    cartItems.push({
+      ...product,
+      quantity: 1
+    });
+
+  }
+
+
+  updateCart();
+
+  openCart();
+
+}
+
+
+// ======================================================
+// ALTERAR QUANTIDADE
+// ======================================================
+
+function changeQuantity(productId, change) {
+
+  const item = cartItems.find(
+    product => product.id === productId
+  );
+
+  if (!item) return;
+
+
+  item.quantity += change;
+
+
+  if (item.quantity <= 0) {
+
+    cartItems = cartItems.filter(
+      product => product.id !== productId
+    );
+
+  }
+
+
+  updateCart();
+}
+
+
+// ======================================================
+// REMOVER ITEM
+// ======================================================
+
+function removeFromCart(productId) {
+
+  cartItems = cartItems.filter(
+    product => product.id !== productId
+  );
+
+  updateCart();
+}
+
+
+// ======================================================
+// ATUALIZAR CARRINHO
+// ======================================================
+
+function updateCart() {
+
+  if (!cartItemsContainer) return;
+
+
+  if (cartItems.length === 0) {
+
+    cartItemsContainer.innerHTML = "";
+
+    if (cartEmpty) {
+      cartEmpty.style.display = "block";
+    }
+
+  } else {
+
+    if (cartEmpty) {
+      cartEmpty.style.display = "none";
+    }
+
+
+    cartItemsContainer.innerHTML = cartItems.map(item => {
+
+      const subtotal =
+        item.price * item.quantity;
+
+      return `
+        <div class="cart-row">
+
+          <div>
+
+            <strong>
+              ${item.name}
+            </strong>
+
+            <small>
+              ${formatPrice(item.price)} cada
+            </small>
+
+            <div style="
+              margin-top:8px;
+              display:flex;
+              align-items:center;
+              gap:7px;
+            ">
+
+              <button
+                class="qty button"
+                onclick="changeQuantity(${item.id}, -1)"
+              >
+                −
+              </button>
+
+              <strong>
+                ${item.quantity}
+              </strong>
+
+              <button
+                class="qty button"
+                onclick="changeQuantity(${item.id}, 1)"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div style="text-align:right">
+
+            <strong>
+              ${formatPrice(subtotal)}
+            </strong>
+
+            <button
+              onclick="removeFromCart(${item.id})"
+              style="
+                display:block;
+                margin-top:8px;
+                background:none;
+                border:0;
+                color:#ff6b9d;
+                cursor:pointer;
+              "
+            >
+              Remover
+            </button>
+
+          </div>
+
+        </div>
+      `;
+
+    }).join("");
+
+  }
+
+
+  const totalQuantity = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
+
+  const totalPrice = cartItems.reduce(
+    (total, item) =>
+      total + (item.price * item.quantity),
+    0
+  );
+
+
+  if (cartCount) {
+    cartCount.textContent = totalQuantity;
+  }
+
+
+  if (cartTotal) {
+    cartTotal.textContent =
+      formatPrice(totalPrice);
+  }
+
+}
+
+
+// ======================================================
+// ABRIR CARRINHO
+// ======================================================
+
+function openCart() {
+
+  if (!cart || !overlay) return;
+
+  cart.classList.add("open");
+  overlay.classList.add("show");
+
+}
+
+
+// ======================================================
+// FECHAR CARRINHO
+// ======================================================
+
+function closeCart() {
+
+  if (!cart || !overlay) return;
+
+  cart.classList.remove("open");
+  overlay.classList.remove("show");
+
+}
+
+
+if (cartButton) {
+  cartButton.addEventListener("click", openCart);
+}
+
+
+if (closeCartButton) {
+  closeCartButton.addEventListener("click", closeCart);
+}
+
+
+if (overlay) {
+  overlay.addEventListener("click", closeCart);
+}
+
+
+// ======================================================
+// LIMPAR CARRINHO
+// ======================================================
+
+if (clearCartButton) {
+
+  clearCartButton.addEventListener("click", function() {
+
+    cartItems = [];
+
+    updateCart();
+
+  });
+
+}
+
+
+// ======================================================
+// CHECKOUT
+// ======================================================
+
+if (checkoutButton) {
+
+  checkoutButton.addEventListener("click", function() {
+
+    if (cartItems.length === 0) {
+
+      alert("Seu carrinho está vazio.");
+
+      return;
+    }
+
+
+    if (customerModal) {
+
+      customerModal.classList.add("show");
+
+    }
+
+  });
+
+}
+
+
+// ======================================================
+// FECHAR MODAL
+// ======================================================
+
+if (closeModalButton) {
+
+  closeModalButton.addEventListener("click", function() {
+
+    customerModal.classList.remove("show");
+
+  });
+
+}
+
+
+// ======================================================
+// CLICAR FORA DO MODAL
+// ======================================================
+
+if (customerModal) {
+
+  customerModal.addEventListener("click", function(event) {
+
+    if (event.target === customerModal) {
+
+      customerModal.classList.remove("show");
+
+    }
+
+  });
+
+}
+
+
+// ======================================================
+// GERAR PEDIDO WHATSAPP
+// ======================================================
+
+if (orderForm) {
+
+  orderForm.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+
+    const name =
+      customerName.value.trim();
+
+    const phone =
+      customerPhone.value.trim();
+
+    const note =
+      customerNote.value.trim();
+
+
+    if (!name || !phone) {
+
+      alert("Preencha seu nome e WhatsApp.");
+
+      return;
+    }
+
+
+    // ==============================================
+    // MONTA OS PRODUTOS DO PEDIDO
+    // ==============================================
+
+    let orderText =
+      "Olá! Gostaria de fazer um pedido na Okyak Store.%0A%0A";
+
+
+    orderText +=
+      "*Cliente:* " +
+      encodeURIComponent(name) +
+      "%0A";
+
+
+    orderText +=
+      "*WhatsApp:* " +
+      encodeURIComponent(phone) +
+      "%0A%0A";
+
+
+    orderText +=
+      "*Pedido:*%0A";
+
+
+    cartItems.forEach(item => {
+
+      const subtotal =
+        item.price * item.quantity;
+
+
+      orderText +=
+        "• " +
+        encodeURIComponent(item.name) +
+        " x" +
+        item.quantity +
+        " — " +
+        encodeURIComponent(formatPrice(subtotal)) +
+        "%0A";
+
+    });
+
+
+    const total = cartItems.reduce(
+      (sum, item) =>
+        sum + (item.price * item.quantity),
+      0
+    );
+
+
+    orderText +=
+      "%0A*Total: " +
+      encodeURIComponent(formatPrice(total)) +
+      "*";
+
+
+    if (note) {
+
+      orderText +=
+        "%0A%0A*Observação:* " +
+        encodeURIComponent(note);
+
+    }
+
+
+    orderText +=
+      "%0A%0A_Aguardo as instruções para pagamento via PIX._";
+
+
+    // ==============================================
+    // NÚMERO DA OKYAK STORE
+    // ==============================================
+    //
+    // TROQUE PELO SEU NÚMERO DO WHATSAPP.
+    //
+    // Formato:
+    // 55 + DDD + número
+    //
+    // Exemplo:
+    // 5587999999999
+    //
+
+    const whatsappNumber =
+      "5587999999999";
+
+
+    const whatsappURL =
+      `https://wa.me/${whatsappNumber}?text=${orderText}`;
+
+
+    window.open(
+      whatsappURL,
+      "_blank"
+    );
+
+
+    customerModal.classList.remove("show");
+
+  });
+
+}
+
+
+// ======================================================
+// ANO DO RODAPÉ
+// ======================================================
+
+if (yearElement) {
+
+  yearElement.textContent =
+    new Date().getFullYear();
+
+}
+
+
+// ======================================================
+// INICIALIZAÇÃO
+// ======================================================
+
+renderProducts();
+
+updateCart();
+```
+
