@@ -110,8 +110,8 @@ const products = [
     id: 5,
     name: "Cartão-presente Roblox",
     category: "Roblox",
-    value: "R$ 10,00",
-    price: 12.00,
+    value: "Roblox 1050",
+    price: 71.50,
 
     image:
       "https://commons.wikimedia.org/wiki/Special:Redirect/file/Roblox_Logo.svg",
@@ -121,7 +121,7 @@ const products = [
     description:
       "Cartão-presente Roblox.",
 
-    stock: false
+    stock: true
   },
 
 
