@@ -16,15 +16,15 @@ const products = [
   // =========================
 
   {
-    id: 1,
-    name: "Cartão-presente digital Xbox",
-    category: "Xbox",
-    value: "R$ 5,00",
-    price: 7.00,
-    icon: "🎮",
-    description: "Cartão-presente Xbox com R$ 5,00 de saldo.",
-    stock: true
-  },
+  id: 1,
+  name: "Cartão-presente digital Xbox",
+  category: "Xbox",
+  value: "R$ 5,00",
+  price: 7.00,
+  image: "https://m.media-amazon.com/images/I/51z5xQx7JVL._SL1000_.jpg",
+  description: "Cartão-presente Xbox com R$ 5,00 de saldo.",
+  stock: true
+},
 
 
   // =========================
