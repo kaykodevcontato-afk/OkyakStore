@@ -106,15 +106,15 @@ const products = [
   // ROBLOX — DISPONÍVEL
   // ==================================================
 
-  {
+{
   id: 5,
-  name: "Cartão-presente Roblox",
+  name: "Roblox — 1.050 Robux",
   category: "Roblox",
-  value: "Roblox 1050",
+  value: "1.050 Robux",
   price: 71.50,
   image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Roblox_Logo.svg",
   icon: "⬜",
-  description: "Cartão-presente Roblox.",
+  description: "Receba 1.050 Robux para usar na sua conta Roblox.",
   stock: true
 },
 
