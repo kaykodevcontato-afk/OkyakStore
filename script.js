@@ -129,7 +129,7 @@ const products = [
 
   {
   id: 6,
-  name: "Gift Card Netshoes",
+  name: "Cartão-presente Netshoes",
   category: "Netshoes",
   value: "R$ 15,00",
   price: 17.00,
@@ -140,7 +140,7 @@ const products = [
   icon: "👟",
 
   description:
-    "Gift Card Netshoes no valor de R$ 15,00.",
+    "Cartão-presente Netshoes no valor de R$ 15,00.",
 
   stock: true
 }
