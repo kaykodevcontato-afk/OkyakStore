@@ -140,7 +140,7 @@ const products = [
   icon: "👟",
 
   description:
-    "Cartão-presente Netshoes com R$ 15,00 de saldo",
+    "Cartão-presente Netshoes com R$ 15,00 de saldo.",
 
   stock: true
 }
