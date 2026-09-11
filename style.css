@@ -384,3 +384,124 @@ footer{padding:35px 8%;border-top:1px solid var(--line);display:flex;justify-con
 .remove-product:hover{
   color:#fff;
 }
+
+/* =========================================
+   IMAGENS DOS GIFT CARDS
+   ========================================= */
+
+.product-image{
+  position:relative;
+  width:100%;
+  height:190px;
+  border-radius:16px;
+  overflow:hidden;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(139,92,246,.28),
+      transparent 65%
+    ),
+    #0b0a14;
+
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.product-image img{
+  width:80%;
+  height:80%;
+  object-fit:contain;
+
+  filter:
+    drop-shadow(0 0 15px rgba(139,92,246,.35));
+
+  transition:
+    transform .3s ease,
+    filter .3s ease;
+}
+
+.product:hover .product-image img{
+  transform:scale(1.08);
+
+  filter:
+    drop-shadow(0 0 25px rgba(37,217,255,.45));
+}
+
+
+/* =========================================
+   SELO DE ESTOQUE
+   ========================================= */
+
+.stock-badge{
+  position:absolute;
+  top:10px;
+  right:10px;
+
+  padding:5px 10px;
+
+  border-radius:999px;
+
+  background:rgba(0,0,0,.78);
+
+  border:1px solid rgba(255,255,255,.12);
+
+  color:#ff6b9d;
+
+  font-size:9px;
+  font-weight:900;
+
+  letter-spacing:1px;
+}
+
+.stock-badge.available{
+  color:#61ffae;
+
+  border-color:
+    rgba(97,255,174,.35);
+}
+
+
+/* =========================================
+   SEM ESTOQUE
+   ========================================= */
+
+.out-of-stock{
+  opacity:.72;
+}
+
+.out-of-stock .product-image img{
+  filter:
+    grayscale(.7)
+    brightness(.65);
+}
+
+.out-of-stock:hover .product-image img{
+  filter:
+    grayscale(.4)
+    brightness(.75);
+}
+
+.unavailable{
+  color:#777;
+  font-size:16px;
+}
+
+
+/* =========================================
+   FALLBACK
+   ========================================= */
+
+.image-fallback{
+  width:100%;
+  height:100%;
+  margin:0;
+
+  display:grid;
+  place-items:center;
+
+  font-size:60px;
+}
