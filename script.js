@@ -4,11 +4,17 @@
 // Gift Cards • Busca • Filtros • Carrinho • WhatsApp
 // ======================================================
 
+
 // ======================================================
 // PRODUTOS
 // ======================================================
 
 const products = [
+
+  // =========================
+  // XBOX — DISPONÍVEL
+  // =========================
+
   {
     id: 1,
     name: "Cartão-presente digital Xbox",
@@ -16,15 +22,95 @@ const products = [
     value: "R$ 5,00",
     price: 7.00,
     icon: "🎮",
-    description: "Cartão-presente Xbox com R$ 5,00 de saldo."
+    description: "Cartão-presente Xbox com R$ 5,00 de saldo.",
+    stock: true
+  },
+
+
+  // =========================
+  // GOOGLE PLAY — SEM ESTOQUE
+  // =========================
+
+  {
+    id: 2,
+    name: "Cartão-presente Google Play",
+    category: "Google Play",
+    value: "R$ 10,00",
+    price: 12.00,
+    icon: "▶️",
+    description: "Cartão-presente Google Play.",
+    stock: false
+  },
+
+
+  // =========================
+  // STEAM — SEM ESTOQUE
+  // =========================
+
+  {
+    id: 3,
+    name: "Cartão-presente Steam",
+    category: "Steam",
+    value: "R$ 10,00",
+    price: 12.00,
+    icon: "🎮",
+    description: "Cartão-presente Steam.",
+    stock: false
+  },
+
+
+  // =========================
+  // PLAYSTATION — SEM ESTOQUE
+  // =========================
+
+  {
+    id: 4,
+    name: "Cartão-presente PlayStation",
+    category: "PlayStation",
+    value: "R$ 10,00",
+    price: 12.00,
+    icon: "🎮",
+    description: "Cartão-presente PlayStation.",
+    stock: false
+  },
+
+
+  // =========================
+  // ROBLOX — SEM ESTOQUE
+  // =========================
+
+  {
+    id: 5,
+    name: "Cartão-presente Roblox",
+    category: "Roblox",
+    value: "R$ 10,00",
+    price: 12.00,
+    icon: "🧱",
+    description: "Cartão-presente Roblox.",
+    stock: false
+  },
+
+
+  // =========================
+  // FREE FIRE — SEM ESTOQUE
+  // =========================
+
+  {
+    id: 6,
+    name: "Gift Card Free Fire",
+    category: "Free Fire",
+    value: "R$ 10,00",
+    price: 12.00,
+    icon: "🔥",
+    description: "Gift Card para Free Fire.",
+    stock: false
   }
 
-  // Novos produtos podem ser adicionados aqui depois.
 ];
 
 
 // ======================================================
-// ELEMENTOS DO SITE
+// ELEMENTOS
 // ======================================================
 
 const productsContainer = document.getElementById("products");
@@ -65,14 +151,16 @@ let searchTerm = "";
 
 
 // ======================================================
-// FORMATAÇÃO DE PREÇO
+// FORMATAÇÃO
 // ======================================================
 
 function formatPrice(value) {
+
   return value.toLocaleString("pt-BR", {
     style: "currency",
     currency: "BRL"
   });
+
 }
 
 
@@ -84,20 +172,25 @@ function renderProducts() {
 
   if (!productsContainer) return;
 
+
   const filteredProducts = products.filter(product => {
 
     const matchesCategory =
       activeCategory === "Todos" ||
       product.category === activeCategory;
 
+
     const text =
       `${product.name} ${product.category} ${product.description}`
         .toLowerCase();
 
+
     const matchesSearch =
       text.includes(searchTerm.toLowerCase());
 
+
     return matchesCategory && matchesSearch;
+
   });
 
 
@@ -119,6 +212,57 @@ function renderProducts() {
 
 
   productsContainer.innerHTML = filteredProducts.map(product => {
+
+    // =========================
+    // PRODUTO SEM ESTOQUE
+    // =========================
+
+    if (!product.stock) {
+
+      return `
+        <article class="product">
+
+          <div class="product-icon">
+            ${product.icon}
+          </div>
+
+          <span class="tag">
+            ${product.category}
+          </span>
+
+          <h3>
+            ${product.name}
+          </h3>
+
+          <p class="tag">
+            ${product.description}
+          </p>
+
+          <div class="price">
+            ${formatPrice(product.price)}
+          </div>
+
+          <button
+            class="btn add"
+            type="button"
+            disabled
+            style="
+              opacity:.55;
+              cursor:not-allowed;
+            "
+          >
+            🚫 Sem estoque
+          </button>
+
+        </article>
+      `;
+
+    }
+
+
+    // =========================
+    // PRODUTO DISPONÍVEL
+    // =========================
 
     return `
       <article class="product">
@@ -145,6 +289,7 @@ function renderProducts() {
 
         <button
           class="btn add"
+          type="button"
           onclick="addToCart(${product.id})"
         >
           🛒 Adicionar ao carrinho
@@ -154,6 +299,7 @@ function renderProducts() {
     `;
 
   }).join("");
+
 }
 
 
@@ -169,15 +315,23 @@ if (filtersContainer) {
 
     if (!button) return;
 
-    activeCategory = button.dataset.category;
+
+    activeCategory =
+      button.dataset.category;
+
 
     document.querySelectorAll(".filter").forEach(filter => {
+
       filter.classList.remove("active");
+
     });
+
 
     button.classList.add("active");
 
+
     renderProducts();
+
   });
 
 }
@@ -191,7 +345,9 @@ if (searchInput) {
 
   searchInput.addEventListener("input", function() {
 
-    searchTerm = this.value.trim();
+    searchTerm =
+      this.value.trim();
+
 
     renderProducts();
 
@@ -206,16 +362,24 @@ if (searchInput) {
 
 function addToCart(productId) {
 
-  const product = products.find(
-    item => item.id === productId
-  );
+  const product =
+    products.find(item => item.id === productId);
+
 
   if (!product) return;
 
 
-  const existingItem = cartItems.find(
-    item => item.id === productId
-  );
+  if (!product.stock) {
+
+    alert("Este Gift Card está sem estoque.");
+
+    return;
+
+  }
+
+
+  const existingItem =
+    cartItems.find(item => item.id === productId);
 
 
   if (existingItem) {
@@ -245,9 +409,9 @@ function addToCart(productId) {
 
 function changeQuantity(productId, change) {
 
-  const item = cartItems.find(
-    product => product.id === productId
-  );
+  const item =
+    cartItems.find(product => product.id === productId);
+
 
   if (!item) return;
 
@@ -257,28 +421,33 @@ function changeQuantity(productId, change) {
 
   if (item.quantity <= 0) {
 
-    cartItems = cartItems.filter(
-      product => product.id !== productId
-    );
+    cartItems =
+      cartItems.filter(
+        product => product.id !== productId
+      );
 
   }
 
 
   updateCart();
+
 }
 
 
 // ======================================================
-// REMOVER ITEM
+// REMOVER
 // ======================================================
 
 function removeFromCart(productId) {
 
-  cartItems = cartItems.filter(
-    product => product.id !== productId
-  );
+  cartItems =
+    cartItems.filter(
+      product => product.id !== productId
+    );
+
 
   updateCart();
+
 }
 
 
@@ -306,105 +475,118 @@ function updateCart() {
     }
 
 
-    cartItemsContainer.innerHTML = cartItems.map(item => {
+    cartItemsContainer.innerHTML =
+      cartItems.map(item => {
 
-      const subtotal =
-        item.price * item.quantity;
+        const subtotal =
+          item.price * item.quantity;
 
-      return `
-        <div class="cart-row">
 
-          <div>
+        return `
+          <div class="cart-row">
 
-            <strong>
-              ${item.name}
-            </strong>
-
-            <small>
-              ${formatPrice(item.price)} cada
-            </small>
-
-            <div style="
-              margin-top:8px;
-              display:flex;
-              align-items:center;
-              gap:7px;
-            ">
-
-              <button
-                class="qty button"
-                onclick="changeQuantity(${item.id}, -1)"
-              >
-                −
-              </button>
+            <div>
 
               <strong>
-                ${item.quantity}
+                ${item.name}
+              </strong>
+
+              <small>
+                ${formatPrice(item.price)} cada
+              </small>
+
+              <div style="
+                margin-top:8px;
+                display:flex;
+                align-items:center;
+                gap:7px;
+              ">
+
+                <button
+                  class="qty button"
+                  onclick="changeQuantity(${item.id}, -1)"
+                  type="button"
+                >
+                  −
+                </button>
+
+                <strong>
+                  ${item.quantity}
+                </strong>
+
+                <button
+                  class="qty button"
+                  onclick="changeQuantity(${item.id}, 1)"
+                  type="button"
+                >
+                  +
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <div style="text-align:right">
+
+              <strong>
+                ${formatPrice(subtotal)}
               </strong>
 
               <button
-                class="qty button"
-                onclick="changeQuantity(${item.id}, 1)"
+                onclick="removeFromCart(${item.id})"
+                type="button"
+                style="
+                  display:block;
+                  margin-top:8px;
+                  background:none;
+                  border:0;
+                  color:#ff6b9d;
+                  cursor:pointer;
+                "
               >
-                +
+                Remover
               </button>
 
             </div>
 
           </div>
+        `;
 
-
-          <div style="text-align:right">
-
-            <strong>
-              ${formatPrice(subtotal)}
-            </strong>
-
-            <button
-              onclick="removeFromCart(${item.id})"
-              style="
-                display:block;
-                margin-top:8px;
-                background:none;
-                border:0;
-                color:#ff6b9d;
-                cursor:pointer;
-              "
-            >
-              Remover
-            </button>
-
-          </div>
-
-        </div>
-      `;
-
-    }).join("");
+      }).join("");
 
   }
 
 
-  const totalQuantity = cartItems.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
+  const totalQuantity =
+    cartItems.reduce(
+      (total, item) =>
+        total + item.quantity,
+      0
+    );
 
 
-  const totalPrice = cartItems.reduce(
-    (total, item) =>
-      total + (item.price * item.quantity),
-    0
-  );
+  const totalPrice =
+    cartItems.reduce(
+      (total, item) =>
+        total + (item.price * item.quantity),
+      0
+    );
 
 
   if (cartCount) {
-    cartCount.textContent = totalQuantity;
+
+    cartCount.textContent =
+      totalQuantity;
+
   }
 
 
   if (cartTotal) {
+
     cartTotal.textContent =
       formatPrice(totalPrice);
+
   }
 
 }
@@ -413,273 +595,4 @@ function updateCart() {
 // ======================================================
 // ABRIR CARRINHO
 // ======================================================
-
-function openCart() {
-
-  if (!cart || !overlay) return;
-
-  cart.classList.add("open");
-  overlay.classList.add("show");
-
-}
-
-
-// ======================================================
-// FECHAR CARRINHO
-// ======================================================
-
-function closeCart() {
-
-  if (!cart || !overlay) return;
-
-  cart.classList.remove("open");
-  overlay.classList.remove("show");
-
-}
-
-
-if (cartButton) {
-  cartButton.addEventListener("click", openCart);
-}
-
-
-if (closeCartButton) {
-  closeCartButton.addEventListener("click", closeCart);
-}
-
-
-if (overlay) {
-  overlay.addEventListener("click", closeCart);
-}
-
-
-// ======================================================
-// LIMPAR CARRINHO
-// ======================================================
-
-if (clearCartButton) {
-
-  clearCartButton.addEventListener("click", function() {
-
-    cartItems = [];
-
-    updateCart();
-
-  });
-
-}
-
-
-// ======================================================
-// CHECKOUT
-// ======================================================
-
-if (checkoutButton) {
-
-  checkoutButton.addEventListener("click", function() {
-
-    if (cartItems.length === 0) {
-
-      alert("Seu carrinho está vazio.");
-
-      return;
-    }
-
-
-    if (customerModal) {
-
-      customerModal.classList.add("show");
-
-    }
-
-  });
-
-}
-
-
-// ======================================================
-// FECHAR MODAL
-// ======================================================
-
-if (closeModalButton) {
-
-  closeModalButton.addEventListener("click", function() {
-
-    customerModal.classList.remove("show");
-
-  });
-
-}
-
-
-// ======================================================
-// CLICAR FORA DO MODAL
-// ======================================================
-
-if (customerModal) {
-
-  customerModal.addEventListener("click", function(event) {
-
-    if (event.target === customerModal) {
-
-      customerModal.classList.remove("show");
-
-    }
-
-  });
-
-}
-
-
-// ======================================================
-// GERAR PEDIDO WHATSAPP
-// ======================================================
-
-if (orderForm) {
-
-  orderForm.addEventListener("submit", function(event) {
-
-    event.preventDefault();
-
-
-    const name =
-      customerName.value.trim();
-
-    const phone =
-      customerPhone.value.trim();
-
-    const note =
-      customerNote.value.trim();
-
-
-    if (!name || !phone) {
-
-      alert("Preencha seu nome e WhatsApp.");
-
-      return;
-    }
-
-
-    // ==============================================
-    // MONTA OS PRODUTOS DO PEDIDO
-    // ==============================================
-
-    let orderText =
-      "Olá! Gostaria de fazer um pedido na Okyak Store.%0A%0A";
-
-
-    orderText +=
-      "*Cliente:* " +
-      encodeURIComponent(name) +
-      "%0A";
-
-
-    orderText +=
-      "*WhatsApp:* " +
-      encodeURIComponent(phone) +
-      "%0A%0A";
-
-
-    orderText +=
-      "*Pedido:*%0A";
-
-
-    cartItems.forEach(item => {
-
-      const subtotal =
-        item.price * item.quantity;
-
-
-      orderText +=
-        "• " +
-        encodeURIComponent(item.name) +
-        " x" +
-        item.quantity +
-        " — " +
-        encodeURIComponent(formatPrice(subtotal)) +
-        "%0A";
-
-    });
-
-
-    const total = cartItems.reduce(
-      (sum, item) =>
-        sum + (item.price * item.quantity),
-      0
-    );
-
-
-    orderText +=
-      "%0A*Total: " +
-      encodeURIComponent(formatPrice(total)) +
-      "*";
-
-
-    if (note) {
-
-      orderText +=
-        "%0A%0A*Observação:* " +
-        encodeURIComponent(note);
-
-    }
-
-
-    orderText +=
-      "%0A%0A_Aguardo as instruções para pagamento via PIX._";
-
-
-    // ==============================================
-    // NÚMERO DA OKYAK STORE
-    // ==============================================
-    //
-    // TROQUE PELO SEU NÚMERO DO WHATSAPP.
-    //
-    // Formato:
-    // 55 + DDD + número
-    //
-    // Exemplo:
-    // 5587999999999
-    //
-
-    const whatsappNumber =
-      "5511930758262";
-
-
-    const whatsappURL =
-      `https://wa.me/${whatsappNumber}?text=${orderText}`;
-
-
-    window.open(
-      whatsappURL,
-      "_blank"
-    );
-
-
-    customerModal.classList.remove("show");
-
-  });
-
-}
-
-
-// ======================================================
-// ANO DO RODAPÉ
-// ======================================================
-
-if (yearElement) {
-
-  yearElement.textContent =
-    new Date().getFullYear();
-
-}
-
-
-// ======================================================
-// INICIALIZAÇÃO
-// ======================================================
-
-renderProducts();
-
-updateCart();
 ```
-
