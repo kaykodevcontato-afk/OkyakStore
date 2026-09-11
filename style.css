@@ -1538,3 +1538,514 @@ textarea:focus{
   }
 
 }
+
+@media (max-width: 800px){
+
+  /* Evita qualquer conteúdo ultrapassando a tela */
+  html,
+  body{
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden;
+  }
+
+  /* ==========================================
+     TOPO
+  ========================================== */
+
+  .topbar{
+    width:100%;
+    min-height:70px;
+    height:auto;
+
+    padding:10px 4%;
+
+    gap:8px;
+  }
+
+  .brand{
+    min-width:0;
+  }
+
+  .brand > span:last-child{
+    min-width:0;
+  }
+
+  .brand strong,
+  .brand small{
+    white-space:nowrap;
+  }
+
+  .cart-button{
+    flex-shrink:0;
+  }
+
+  /* ==========================================
+     HERO
+  ========================================== */
+
+  .hero{
+    width:100%;
+    min-height:auto;
+
+    padding:
+      45px 5%
+      50px;
+
+    overflow:hidden;
+  }
+
+  .hero-content{
+    width:100%;
+    max-width:100%;
+  }
+
+  .hero h1{
+    width:100%;
+
+    font-size:
+      clamp(34px,9vw,52px);
+
+    line-height:1.08;
+
+    letter-spacing:-1.5px;
+
+    overflow-wrap:anywhere;
+  }
+
+  .hero p:not(.eyebrow){
+    width:100%;
+    max-width:100%;
+
+    font-size:15px;
+
+    line-height:1.6;
+
+    margin:
+      18px auto;
+  }
+
+  .hero-actions{
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:stretch;
+
+    flex-direction:column;
+  }
+
+  .hero-actions .btn{
+    width:100%;
+    text-align:center;
+  }
+
+  .hero-orb{
+    width:180px;
+    height:180px;
+
+    flex-shrink:0;
+  }
+
+  /* ==========================================
+     SEÇÕES
+  ========================================== */
+
+  .section{
+    width:100%;
+
+    padding:
+      45px 5%;
+  }
+
+  .section-head{
+    width:100%;
+  }
+
+  .section h2{
+    width:100%;
+
+    font-size:28px;
+
+    line-height:1.2;
+
+    overflow-wrap:anywhere;
+  }
+
+  .eyebrow{
+    max-width:100%;
+
+    line-height:1.5;
+
+    overflow-wrap:anywhere;
+  }
+
+  /* ==========================================
+     PESQUISA
+  ========================================== */
+
+  .search{
+    width:100%;
+    max-width:100%;
+
+    min-height:46px;
+  }
+
+  /* ==========================================
+     FILTROS
+  ========================================== */
+
+  .filters{
+    width:100%;
+
+    display:flex;
+
+    flex-wrap:nowrap;
+
+    overflow-x:auto;
+
+    overflow-y:hidden;
+
+    padding:
+      3px 2px 10px;
+
+    scrollbar-width:none;
+  }
+
+  .filters::-webkit-scrollbar{
+    display:none;
+  }
+
+  .filter{
+    flex:0 0 auto;
+
+    white-space:nowrap;
+  }
+
+  /* ==========================================
+     PRODUTOS
+  ========================================== */
+
+  .products{
+    width:100%;
+
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+
+    gap:12px;
+  }
+
+  .product{
+    width:100%;
+    min-width:0;
+
+    padding:12px;
+
+    overflow:hidden;
+  }
+
+  .product-image{
+    width:100%;
+    height:125px;
+
+    margin-bottom:12px;
+  }
+
+  .product-image img{
+    max-width:100%;
+    max-height:100%;
+  }
+
+  .product h3{
+    width:100%;
+
+    font-size:14px;
+
+    line-height:1.3;
+
+    overflow-wrap:anywhere;
+
+    word-break:normal;
+  }
+
+  .tag{
+    max-width:100%;
+
+    line-height:1.4;
+
+    overflow-wrap:anywhere;
+  }
+
+  .product-description{
+    width:100%;
+
+    min-height:0;
+
+    margin-top:7px;
+
+    font-size:11px;
+
+    line-height:1.45;
+
+    overflow-wrap:anywhere;
+  }
+
+  .price{
+    white-space:nowrap;
+
+    font-size:16px;
+
+    margin:
+      9px 0;
+  }
+
+  .btn.add{
+    width:100%;
+
+    min-height:42px;
+
+    padding:9px 6px;
+
+    font-size:11px;
+
+    line-height:1.25;
+
+    white-space:normal;
+
+    overflow-wrap:anywhere;
+  }
+
+  .stock-badge{
+    max-width:calc(100% - 14px);
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+  }
+
+  /* ==========================================
+     GAMEPLAYS
+  ========================================== */
+
+  .gameplays-intro{
+    width:100%;
+
+    font-size:14px;
+
+    line-height:1.5;
+
+    overflow-wrap:anywhere;
+  }
+
+  .gameplay-grid{
+    width:100%;
+
+    grid-template-columns:1fr;
+
+    gap:15px;
+  }
+
+  .gameplay-card{
+    width:100%;
+
+    min-width:0;
+
+    overflow:hidden;
+  }
+
+  .gameplay-image{
+    width:100%;
+
+    aspect-ratio:16/9;
+  }
+
+  .gameplay-image img{
+    width:100%;
+    height:100%;
+  }
+
+  .gameplay-info{
+    width:100%;
+
+    padding:15px;
+  }
+
+  .gameplay-info h3{
+    width:100%;
+
+    font-size:16px;
+
+    line-height:1.35;
+
+    overflow-wrap:anywhere;
+  }
+
+  .gameplay-info a{
+    display:inline-block;
+
+    max-width:100%;
+
+    font-size:12px;
+
+    line-height:1.4;
+
+    overflow-wrap:anywhere;
+  }
+
+  /* ==========================================
+     COMO FUNCIONA
+  ========================================== */
+
+  .steps{
+    width:100%;
+
+    grid-template-columns:1fr;
+
+    gap:12px;
+  }
+
+  .steps article{
+    width:100%;
+
+    min-width:0;
+  }
+
+  .steps h3{
+    line-height:1.3;
+  }
+
+  .steps p{
+    line-height:1.55;
+
+    overflow-wrap:anywhere;
+  }
+
+  .notice{
+    width:100%;
+
+    line-height:1.5;
+
+    overflow-wrap:anywhere;
+  }
+
+  /* ==========================================
+     CARRINHO
+  ========================================== */
+
+  .cart{
+    width:100%;
+    max-width:100%;
+  }
+
+  .cart-head{
+    flex-shrink:0;
+  }
+
+  .cart-items{
+    width:100%;
+
+    min-width:0;
+
+    overflow-x:hidden;
+    overflow-y:auto;
+  }
+
+  .cart-row{
+    width:100%;
+
+    grid-template-columns:
+      minmax(0,1fr)
+      auto;
+
+    gap:8px;
+  }
+
+  .cart-row strong{
+    overflow-wrap:anywhere;
+  }
+
+  .cart-product-total{
+    min-width:65px;
+  }
+
+  /* ==========================================
+     MODAL
+  ========================================== */
+
+  .modal{
+    width:100%;
+
+    padding:12px;
+  }
+
+  .modal-box{
+    width:100%;
+    max-width:460px;
+
+    max-height:
+      calc(100vh - 24px);
+
+    overflow-y:auto;
+  }
+
+  .modal-box h2{
+    line-height:1.2;
+  }
+
+  /* ==========================================
+     FOOTER
+  ========================================== */
+
+  footer{
+    width:100%;
+
+    flex-direction:column;
+
+    text-align:center;
+
+    padding:
+      30px 5%;
+
+    overflow:hidden;
+  }
+}
+
+
+/* ==============================================
+   CELULAR MUITO PEQUENO
+============================================== */
+
+@media (max-width:400px){
+
+  .products{
+    grid-template-columns:1fr;
+  }
+
+  .product-image{
+    height:180px;
+  }
+
+  .product h3{
+    font-size:16px;
+  }
+
+  .product-description{
+    font-size:13px;
+  }
+
+  .btn.add{
+    font-size:13px;
+  }
+
+  .hero h1{
+    font-size:34px;
+  }
+
+  .section h2{
+    font-size:25px;
+  }
+}
