@@ -1,1 +1,106 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Okyak Store - Gift Cards, Games e Produtos Digitais">
+  <title>Okyak Store | Gift Cards & Games</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="Okyak Store">
+      <span class="brand-mark">👽</span>
+      <span><strong>OKYAK</strong><small>STORE</small></span>
+    </a>
+    <nav>
+      <a href="#inicio">Início</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#como-funciona">Como funciona</a>
+    </nav>
+    <button class="cart-button" id="openCart">🛒 <span>Carrinho</span><b id="cartCount">0</b></button>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+        <p class="eyebrow">ALIEN OKYAK • LOJA DIGITAL</p>
+        <h1>Seu universo de<br><span>Gift Cards</span> começa aqui.</h1>
+        <p>Compre Gift Cards e produtos digitais. Pedido simples e entrega manual pelo WhatsApp após a confirmação do pagamento.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#catalogo">Ver catálogo</a>
+          <a class="btn ghost" href="#como-funciona">Como funciona?</a>
+        </div>
+      </div>
+      <div class="hero-orb"><div class="alien">👽</div><span>OKYAK<br>NEXUS</span></div>
+    </section>
+
+    <section class="section" id="catalogo">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">CATÁLOGO</p>
+          <h2>Escolha seu Gift Card</h2>
+        </div>
+        <input id="search" class="search" type="search" placeholder="🔎 Pesquisar produto...">
+      </div>
+      <div class="filters" id="filters">
+        <button class="filter active" data-category="Todos">Todos</button>
+        <button class="filter" data-category="Google Play">Google Play</button>
+        <button class="filter" data-category="Steam">Steam</button>
+        <button class="filter" data-category="PlayStation">PlayStation</button>
+        <button class="filter" data-category="Xbox">Xbox</button>
+        <button class="filter" data-category="Roblox">Roblox</button>
+        <button class="filter" data-category="Free Fire">Free Fire</button>
+      </div>
+      <div class="products" id="products"></div>
+    </section>
+
+    <section class="how section" id="como-funciona">
+      <p class="eyebrow">COMPRA MANUAL</p>
+      <h2>Como funciona?</h2>
+      <div class="steps">
+        <article><span>01</span><h3>Escolha</h3><p>Adicione os Gift Cards que deseja ao carrinho.</p></article>
+        <article><span>02</span><h3>Envie o pedido</h3><p>Confira seus dados e envie o pedido pelo WhatsApp.</p></article>
+        <article><span>03</span><h3>Pagamento</h3><p>Você recebe as instruções para pagamento via PIX.</p></article>
+        <article><span>04</span><h3>Receba o código</h3><p>Após a confirmação, o código é enviado manualmente.</p></article>
+      </div>
+      <div class="notice">⚠️ Nunca envie senha, código de autenticação ou dados do cartão. O pagamento e a entrega devem ser confirmados diretamente pela Okyak Store.</div>
+    </section>
+  </main>
+
+  <footer>
+    <div><strong>👽 OKYAK STORE</strong><p>Gift Cards • Games • Produtos Digitais</p></div>
+    <p>© <span id="year"></span> Okyak Store. Todos os direitos reservados.</p>
+  </footer>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="cart" id="cart" aria-label="Carrinho">
+    <div class="cart-head"><h2>Seu carrinho</h2><button id="closeCart">✕</button></div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-empty" id="cartEmpty">Seu carrinho está vazio.</div>
+    <div class="cart-footer">
+      <div class="total"><span>Total</span><strong id="cartTotal">R$ 0,00</strong></div>
+      <button class="btn whatsapp" id="checkout">📱 Pedir pelo WhatsApp</button>
+      <button class="clear" id="clearCart">Limpar carrinho</button>
+    </div>
+  </aside>
+
+  <div class="modal" id="customerModal">
+    <div class="modal-box">
+      <button class="modal-close" id="closeModal">✕</button>
+      <p class="eyebrow">FINALIZAR PEDIDO</p>
+      <h2>Seus dados</h2>
+      <p>Preencha os dados para gerar a mensagem do pedido no WhatsApp.</p>
+      <form id="orderForm">
+        <label>Nome<input required id="customerName" placeholder="Seu nome"></label>
+        <label>WhatsApp<input required id="customerPhone" placeholder="(87) 99999-9999"></label>
+        <label>Observação (opcional)<textarea id="customerNote" rows="3" placeholder="Ex.: Quero receber pelo WhatsApp"></textarea></label>
+        <button class="btn whatsapp" type="submit">Enviar pedido no WhatsApp</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
