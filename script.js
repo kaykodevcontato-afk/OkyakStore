@@ -112,9 +112,13 @@ const products = [
   category: "Roblox",
   value: "1.050 Robux",
   price: 71.50,
+  
   image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Roblox_Logo.svg",
   icon: "⬜",
-  description: "Receba 1.050 Robux para usar na sua conta Roblox.",
+  
+  description:  
+    "Receba 1.050 Robux para usar na sua conta Roblox.",
+  
   stock: true
 },
 
