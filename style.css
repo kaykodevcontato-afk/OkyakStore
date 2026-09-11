@@ -23,11 +23,18 @@ footer{padding:35px 8%;border-top:1px solid var(--line);display:flex;justify-con
 @media(max-width:800px){nav{display:none}.hero{padding:55px 7%;text-align:center;flex-direction:column}.hero p:not(.eyebrow){margin-left:auto;margin-right:auto}.hero-orb{width:220px;height:220px}.section{padding:60px 6%}.section-head{align-items:stretch;flex-direction:column}.steps{grid-template-columns:1fr 1fr}footer{flex-direction:column}}
 @media(max-width:480px){.hero h1{letter-spacing:-2px}.steps{grid-template-columns:1fr}.cart-button span{display:none}}
 
+/* =========================================
+   GAMEPLAYS - ALIEN SAMURAI / OKYAK
+========================================= */
+
 .gameplays-intro {
   color: var(--muted);
   margin-top: -10px;
   margin-bottom: 28px;
 }
+
+
+/* GRID DAS GAMEPLAYS */
 
 .gameplay-grid {
   display: grid;
@@ -35,137 +42,228 @@ footer{padding:35px 8%;border-top:1px solid var(--line);display:flex;justify-con
   gap: 18px;
 }
 
+
+/* CARD */
+
 .gameplay-card {
   overflow: hidden;
-  background: linear-gradient(145deg, var(--panel), #0b0a14);
+
+  background: linear-gradient(
+    145deg,
+    var(--panel),
+    #0b0a14
+  );
+
   border: 1px solid var(--line);
   border-radius: 18px;
-  transition: 0.25s;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
+
+
+/* EFEITO DO CARD */
 
 .gameplay-card:hover {
   transform: translateY(-6px);
+
   border-color: rgba(255, 47, 214, 0.5);
-  box-shadow: 0 15px 40px rgba(255, 47, 214, 0.12);
+
+  box-shadow:
+    0 15px 40px rgba(255, 47, 214, 0.12);
 }
 
-/* CAPA DAS GAMEPLAYS */
+
+/* =========================================
+   THUMBNAIL DO YOUTUBE
+========================================= */
+
 .gameplay-image {
   position: relative;
+
   display: block;
+
   width: 100%;
+
   aspect-ratio: 16 / 9;
+
   overflow: hidden;
+
   background: #080711;
+
   cursor: pointer;
 }
 
-/* Imagem do YouTube */
+
+/* IMAGEM */
+
 .gameplay-image img {
   display: block;
+
   width: 100%;
   height: 100%;
+
   object-fit: cover;
+
   object-position: center;
-  transition: transform 0.35s ease, filter 0.35s ease;
+
+  transition:
+    transform 0.35s ease,
+    filter 0.35s ease;
 }
 
-/* Efeito ao passar o mouse */
+
+/* EFEITO AO PASSAR O MOUSE */
+
 .gameplay-image:hover img {
-  transform: scale(1.04);
-  filter: brightness(0.72);
+  transform: scale(1.05);
+
+  filter: brightness(0.65);
 }
 
-/* Botão Play */
+
+/* =========================================
+   BOTÃO PLAY
+========================================= */
+
 .play-button {
   position: absolute;
+
   left: 50%;
   top: 50%;
+
   transform: translate(-50%, -50%);
 
-  width: 58px;
-  height: 58px;
+  width: 60px;
+  height: 60px;
 
   display: grid;
+
   place-items: center;
 
   border-radius: 50%;
 
-  background: rgba(255, 47, 214, 0.92);
+  background: rgba(255, 47, 214, 0.94);
+
   color: #fff;
 
-  font-size: 22px;
-  padding-left: 3px;
+  font-size: 23px;
+
+  padding-left: 4px;
 
   box-shadow:
     0 0 20px rgba(255, 47, 214, 0.55),
     0 0 45px rgba(139, 92, 246, 0.35);
 
-  transition: 0.25s;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
 
   pointer-events: none;
 }
 
-/* Animação do Play */
+
+/* PLAY AO PASSAR O MOUSE */
+
 .gameplay-image:hover .play-button {
-  transform: translate(-50%, -50%) scale(1.12);
-  background: rgba(255, 47, 214, 1);
+  transform: translate(-50%, -50%) scale(1.15);
+
+  background: #ff2fd6;
+
+  box-shadow:
+    0 0 25px rgba(255, 47, 214, 0.8),
+    0 0 55px rgba(139, 92, 246, 0.5);
 }
 
-.gta {
-  background:
-    linear-gradient(135deg, #6c267f, #ff8c42);
-}
 
-.state {
-  background:
-    linear-gradient(135deg, #172d22, #69734c);
-}
-
-.ghost {
-  background:
-    linear-gradient(135deg, #26344c, #10151e);
-}
-
-.dead {
-  background:
-    linear-gradient(135deg, #571b16, #160807);
-}
+/* =========================================
+   INFORMAÇÕES DO JOGO
+========================================= */
 
 .gameplay-info {
   padding: 17px;
 }
 
+
+/* CATEGORIA */
+
 .gameplay-info span {
   color: var(--cyan);
+
   font-size: 10px;
+
   font-weight: 800;
+
   letter-spacing: 2px;
 }
 
+
+/* TÍTULO */
+
 .gameplay-info h3 {
   margin: 5px 0 12px;
+
   font-size: 17px;
+
+  line-height: 1.35;
 }
+
+
+/* LINK YOUTUBE */
 
 .gameplay-info a {
   color: #fff;
+
   font-size: 13px;
+
   font-weight: 700;
+
+  transition: color 0.2s ease;
 }
+
+
+/* HOVER LINK */
 
 .gameplay-info a:hover {
   color: var(--pink);
 }
 
+
+/* =========================================
+   RESPONSIVO - TABLET
+========================================= */
+
 @media (max-width: 1000px) {
+
   .gameplay-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
 }
 
+
+/* =========================================
+   RESPONSIVO - CELULAR
+========================================= */
+
 @media (max-width: 550px) {
+
   .gameplay-grid {
     grid-template-columns: 1fr;
   }
+
+  .gameplay-image {
+    aspect-ratio: 16 / 9;
+  }
+
+  .play-button {
+    width: 52px;
+    height: 52px;
+
+    font-size: 20px;
+  }
+
 }
