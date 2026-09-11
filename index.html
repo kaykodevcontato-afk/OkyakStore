@@ -1,296 +1,797 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Okyak Store - Gift Cards, Games e Produtos Digitais">
+
+  <meta
+    name="description"
+    content="Okyak Store - Gift Cards, Games e Produtos Digitais"
+  >
+
   <title>Okyak Store | Gift Cards & Games</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+  <!-- =========================
+       TOPO
+  ========================== -->
+
   <header class="topbar">
+
     <a class="brand" href="#inicio" aria-label="Okyak Store">
+
       <span class="brand-mark">👽</span>
-      <span><strong>OKYAK</strong><small>STORE</small></span>
+
+      <span>
+        <strong>OKYAK</strong>
+        <small>STORE</small>
+      </span>
+
     </a>
+
+
     <nav>
-  <a href="#inicio">Início</a>
-  <a href="#catalogo">Catálogo</a>
-  <a href="#gameplays">Gameplays</a>
-  <a href="#como-funciona">Como funciona</a>
-  <a href="https://www.youtube.com/@Alien_Okyak" target="_blank" rel="noopener">
-    ▶ YouTube Visite meu Canal! 
-  </a>
-</nav>
-    <button class="cart-button" id="openCart">🛒 <span>Carrinho</span><b id="cartCount">0</b></button>
+
+      <a href="#inicio">Início</a>
+
+      <a href="#catalogo">Catálogo</a>
+
+      <a href="#gameplays">Gameplays</a>
+
+      <a href="#como-funciona">Como funciona</a>
+
+      <a
+        href="https://www.youtube.com/@Alien_Okyak"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        ▶ YouTube Visite meu Canal!
+      </a>
+
+    </nav>
+
+
+    <button
+      class="cart-button"
+      id="openCart"
+      type="button"
+    >
+      🛒
+      <span>Carrinho</span>
+      <b id="cartCount">0</b>
+    </button>
+
   </header>
 
+
   <main>
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
     <section class="hero" id="inicio">
+
       <div class="hero-content">
-        <p class="eyebrow">ALIEN OKYAK • LOJA DIGITAL</p>
-        <h1>Seu universo de<br><span>Gift Cards</span> começa aqui.</h1>
-        <p>Compre Gift Cards e produtos digitais. Pedido simples e entrega manual pelo WhatsApp após a confirmação do pagamento.</p>
+
+        <p class="eyebrow">
+          ALIEN OKYAK • LOJA DIGITAL
+        </p>
+
+        <h1>
+          Seu universo de<br>
+          <span>Gift Cards</span> começa aqui.
+        </h1>
+
+        <p>
+          Compre Gift Cards e produtos digitais.
+          Pedido simples e entrega manual pelo WhatsApp
+          após a confirmação do pagamento.
+        </p>
+
         <div class="hero-actions">
-          <a class="btn primary" href="#catalogo">Ver catálogo</a>
-          <a class="btn ghost" href="#como-funciona">Como funciona?</a>
+
+          <a
+            class="btn primary"
+            href="#catalogo"
+          >
+            Ver catálogo
+          </a>
+
+          <a
+            class="btn ghost"
+            href="#como-funciona"
+          >
+            Como funciona?
+          </a>
+
         </div>
+
       </div>
-      <div class="hero-orb"><div class="alien">👽</div><span>OKYAK<br>NAVE</span></div>
+
+
+      <div class="hero-orb">
+
+        <div class="alien">
+          👽
+        </div>
+
+        <span>
+          OKYAK<br>
+          NAVE
+        </span>
+
+      </div>
+
     </section>
 
-    <section class="section" id="catalogo">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">CATÁLOGO</p>
-          <h2>Escolha seu Gift Card</h2>
-        </div>
-        <input id="search" class="search" type="search" placeholder="🔎 Pesquisar produto...">
-      </div>
-      <div class="filters" id="filters">
-        <button class="filter active" data-category="Todos">Todos</button>
-        <button class="filter" data-category="Google Play">Google Play</button>
-        <button class="filter" data-category="Steam">Steam</button>
-        <button class="filter" data-category="PlayStation">PlayStation</button>
-        <button class="filter" data-category="Xbox">Xbox</button>
-        <button class="filter" data-category="Roblox">Roblox</button>
-        <button class="filter" data-category="Free Fire">Free Fire</button>
-      </div>
-      <div class="products" id="products"></div>
-    </section>
 
-   ```html
-<section class="gameplays section" id="gameplays">
+    <!-- =========================
+         CATÁLOGO / GIFT CARDS
+    ========================== -->
 
-  <div class="section-head">
-    <div>
-      <p class="eyebrow">ALIEN SAMURAI / OKYAK</p>
-      <h2>🎮 Gameplays do Canal YouTube @Alien_Okyak</h2>
-    </div>
-
-    <a
-      class="btn primary"
-      href="https://www.youtube.com/@Alien_Okyak"
-      target="_blank"
-      rel="noopener noreferrer"
+    <section
+      class="section"
+      id="catalogo"
     >
-      ▶ Ver canal
-    </a>
-  </div>
 
-  <p class="gameplays-intro">
-    Confira alguns dos jogos e aventuras do universo Alien Okyak.
-  </p>
+      <div class="section-head">
 
-  <div class="gameplay-grid">
+        <div>
 
-    <!-- GTA V -->
-    <article class="gameplay-card">
+          <p class="eyebrow">
+            CATÁLOGO
+          </p>
 
-      <a
-        class="gameplay-image youtube-thumb"
-        href="https://www.youtube.com/watch?v=DJ4bTk08S_I"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Assistir gameplay de GTA V no YouTube"
+          <h2>
+            Escolha seu Gift Card
+          </h2>
+
+        </div>
+
+
+        <input
+          id="search"
+          class="search"
+          type="search"
+          placeholder="🔎 Pesquisar produto..."
+          aria-label="Pesquisar produto"
+        >
+
+      </div>
+
+
+      <!-- FILTROS -->
+
+      <div
+        class="filters"
+        id="filters"
       >
 
-        <img
-          src="https://img.youtube.com/vi/DJ4bTk08S_I/maxresdefault.jpg"
-          alt="Capa da gameplay de GTA V - Alien Okyak"
+        <button
+          class="filter active"
+          data-category="Todos"
+          type="button"
         >
+          Todos
+        </button>
 
-        <span class="play-button">▶</span>
-
-      </a>
-
-      <div class="gameplay-info">
-
-        <span>GAMEPLAY</span>
-
-        <h3>GTA V</h3>
-
-        <a
-          href="https://www.youtube.com/watch?v=DJ4bTk08S_I"
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          class="filter"
+          data-category="Google Play"
+          type="button"
         >
-          Assistir no YouTube →
-        </a>
+          Google Play
+        </button>
+
+        <button
+          class="filter"
+          data-category="Steam"
+          type="button"
+        >
+          Steam
+        </button>
+
+        <button
+          class="filter"
+          data-category="PlayStation"
+          type="button"
+        >
+          PlayStation
+        </button>
+
+        <button
+          class="filter"
+          data-category="Xbox"
+          type="button"
+        >
+          Xbox
+        </button>
+
+        <button
+          class="filter"
+          data-category="Roblox"
+          type="button"
+        >
+          Roblox
+        </button>
+
+        <button
+          class="filter"
+          data-category="Free Fire"
+          type="button"
+        >
+          Free Fire
+        </button>
 
       </div>
 
-    </article>
 
+      <!-- OS PRODUTOS SERÃO INSERIDOS PELO SCRIPT.JS -->
 
-    <!-- STATE OF DECAY 2 -->
-    <article class="gameplay-card">
+      <div
+        class="products"
+        id="products"
+      ></div>
 
-      <a
-        class="gameplay-image youtube-thumb"
-        href="https://youtu.be/XzZdnvg_w4Q"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Assistir gameplay de State of Decay 2 no YouTube"
-      >
-
-        <img
-          src="https://img.youtube.com/vi/XzZdnvg_w4Q/maxresdefault.jpg"
-          alt="Capa da gameplay de State of Decay 2 - Alien Okyak"
-        >
-
-        <span class="play-button">▶</span>
-
-      </a>
-
-      <div class="gameplay-info">
-
-        <span>GAMEPLAY</span>
-
-        <h3>State of Decay 2</h3>
-
-        <a
-          href="https://youtu.be/XzZdnvg_w4Q"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Assistir no YouTube →
-        </a>
-
-      </div>
-
-    </article>
-
-
-    <!-- GHOST RECON BREAKPOINT -->
-    <article class="gameplay-card">
-
-      <a
-        class="gameplay-image youtube-thumb"
-        href="https://youtu.be/KjvbJ2YR4vU"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Assistir gameplay de Ghost Recon Breakpoint no YouTube"
-      >
-
-        <img
-          src="https://img.youtube.com/vi/KjvbJ2YR4vU/maxresdefault.jpg"
-          alt="Capa da gameplay de Ghost Recon Breakpoint - Alien Okyak"
-        >
-
-        <span class="play-button">▶</span>
-
-      </a>
-
-      <div class="gameplay-info">
-
-        <span>GAMEPLAY</span>
-
-        <h3>Tom Clancy's Ghost Recon Breakpoint</h3>
-
-        <a
-          href="https://youtu.be/KjvbJ2YR4vU"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Assistir no YouTube →
-        </a>
-
-      </div>
-
-    </article>
-
-
-    <!-- INTO THE DEAD 2 -->
-    <article class="gameplay-card">
-
-      <a
-        class="gameplay-image youtube-thumb"
-        href="https://www.youtube.com/live/9Rqa_JYuZ1M"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Assistir gameplay de Into the Dead 2 no YouTube"
-      >
-
-        <img
-          src="https://img.youtube.com/vi/9Rqa_JYuZ1M/maxresdefault.jpg"
-          alt="Capa da gameplay de Into the Dead 2 - Alien Okyak"
-        >
-
-        <span class="play-button">▶</span>
-
-      </a>
-
-      <div class="gameplay-info">
-
-        <span>GAMEPLAY</span>
-
-        <h3>Into the Dead 2</h3>
-
-        <a
-          href="https://www.youtube.com/live/9Rqa_JYuZ1M"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Assistir no YouTube →
-        </a>
-
-      </div>
-
-    </article>
-
-  </div>
-
-</section>
-```
-
-</section>
-    
-    <section class="how section" id="como-funciona">
-      <p class="eyebrow">COMPRA MANUAL</p>
-      <h2>Como funciona?</h2>
-      <div class="steps">
-        <article><span>01</span><h3>Escolha</h3><p>Adicione os Gift Cards que deseja ao carrinho.</p></article>
-        <article><span>02</span><h3>Envie o pedido</h3><p>Confira seus dados e envie o pedido pelo WhatsApp.</p></article>
-        <article><span>03</span><h3>Pagamento</h3><p>Você recebe as instruções para pagamento via PIX.</p></article>
-        <article><span>04</span><h3>Receba o código</h3><p>Após a confirmação, o código é enviado manualmente.</p></article>
-      </div>
-      <div class="notice">⚠️ Nunca envie senha, código de autenticação ou dados do cartão. O pagamento e a entrega devem ser confirmados diretamente pela Okyak Store.</div>
     </section>
+
+
+    <!-- =========================
+         GAMEPLAYS
+    ========================== -->
+
+    <section
+      class="gameplays section"
+      id="gameplays"
+    >
+
+      <div class="section-head">
+
+        <div>
+
+          <p class="eyebrow">
+            ALIEN SAMURAI / OKYAK
+          </p>
+
+          <h2>
+            🎮 Gameplays do Canal YouTube @Alien_Okyak
+          </h2>
+
+        </div>
+
+
+        <a
+          class="btn primary"
+          href="https://www.youtube.com/@Alien_Okyak"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ▶ Ver canal
+        </a>
+
+      </div>
+
+
+      <p class="gameplays-intro">
+        Confira alguns dos jogos e aventuras do universo Alien Okyak.
+      </p>
+
+
+      <div class="gameplay-grid">
+
+
+        <!-- GTA V -->
+
+        <article class="gameplay-card">
+
+          <a
+            class="gameplay-image youtube-thumb"
+            href="https://www.youtube.com/watch?v=DJ4bTk08S_I"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Assistir gameplay de GTA V no YouTube"
+          >
+
+            <img
+              src="https://img.youtube.com/vi/DJ4bTk08S_I/maxresdefault.jpg"
+              alt="Capa da gameplay de GTA V - Alien Okyak"
+            >
+
+            <span class="play-button">
+              ▶
+            </span>
+
+          </a>
+
+
+          <div class="gameplay-info">
+
+            <span>
+              GAMEPLAY
+            </span>
+
+            <h3>
+              GTA V
+            </h3>
+
+            <a
+              href="https://www.youtube.com/watch?v=DJ4bTk08S_I"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Assistir no YouTube →
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- STATE OF DECAY 2 -->
+
+        <article class="gameplay-card">
+
+          <a
+            class="gameplay-image youtube-thumb"
+            href="https://youtu.be/XzZdnvg_w4Q"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Assistir gameplay de State of Decay 2 no YouTube"
+          >
+
+            <img
+              src="https://img.youtube.com/vi/XzZdnvg_w4Q/maxresdefault.jpg"
+              alt="Capa da gameplay de State of Decay 2 - Alien Okyak"
+            >
+
+            <span class="play-button">
+              ▶
+            </span>
+
+          </a>
+
+
+          <div class="gameplay-info">
+
+            <span>
+              GAMEPLAY
+            </span>
+
+            <h3>
+              State of Decay 2
+            </h3>
+
+            <a
+              href="https://youtu.be/XzZdnvg_w4Q"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Assistir no YouTube →
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- GHOST RECON BREAKPOINT -->
+
+        <article class="gameplay-card">
+
+          <a
+            class="gameplay-image youtube-thumb"
+            href="https://youtu.be/KjvbJ2YR4vU"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Assistir gameplay de Ghost Recon Breakpoint no YouTube"
+          >
+
+            <img
+              src="https://img.youtube.com/vi/KjvbJ2YR4vU/maxresdefault.jpg"
+              alt="Capa da gameplay de Ghost Recon Breakpoint - Alien Okyak"
+            >
+
+            <span class="play-button">
+              ▶
+            </span>
+
+          </a>
+
+
+          <div class="gameplay-info">
+
+            <span>
+              GAMEPLAY
+            </span>
+
+            <h3>
+              Tom Clancy's Ghost Recon Breakpoint
+            </h3>
+
+            <a
+              href="https://youtu.be/KjvbJ2YR4vU"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Assistir no YouTube →
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- INTO THE DEAD 2 -->
+
+        <article class="gameplay-card">
+
+          <a
+            class="gameplay-image youtube-thumb"
+            href="https://www.youtube.com/live/9Rqa_JYuZ1M"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Assistir gameplay de Into the Dead 2 no YouTube"
+          >
+
+            <img
+              src="https://img.youtube.com/vi/9Rqa_JYuZ1M/maxresdefault.jpg"
+              alt="Capa da gameplay de Into the Dead 2 - Alien Okyak"
+            >
+
+            <span class="play-button">
+              ▶
+            </span>
+
+          </a>
+
+
+          <div class="gameplay-info">
+
+            <span>
+              GAMEPLAY
+            </span>
+
+            <h3>
+              Into the Dead 2
+            </h3>
+
+            <a
+              href="https://www.youtube.com/live/9Rqa_JYuZ1M"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Assistir no YouTube →
+            </a>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         COMO FUNCIONA
+    ========================== -->
+
+    <section
+      class="how section"
+      id="como-funciona"
+    >
+
+      <p class="eyebrow">
+        COMPRA MANUAL
+      </p>
+
+      <h2>
+        Como funciona?
+      </h2>
+
+
+      <div class="steps">
+
+        <article>
+
+          <span>
+            01
+          </span>
+
+          <h3>
+            Escolha
+          </h3>
+
+          <p>
+            Adicione os Gift Cards que deseja ao carrinho.
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <span>
+            02
+          </span>
+
+          <h3>
+            Envie o pedido
+          </h3>
+
+          <p>
+            Confira seus dados e envie o pedido pelo WhatsApp.
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <span>
+            03
+          </span>
+
+          <h3>
+            Pagamento
+          </h3>
+
+          <p>
+            Você recebe as instruções para pagamento via PIX.
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <span>
+            04
+          </span>
+
+          <h3>
+            Receba o código
+          </h3>
+
+          <p>
+            Após a confirmação, o código é enviado manualmente.
+          </p>
+
+        </article>
+
+      </div>
+
+
+      <div class="notice">
+
+        ⚠️ Nunca envie senha, código de autenticação
+        ou dados do cartão. O pagamento e a entrega devem
+        ser confirmados diretamente pela Okyak Store.
+
+      </div>
+
+    </section>
+
   </main>
 
+
+  <!-- =========================
+       RODAPÉ
+  ========================== -->
+
   <footer>
-    <div><strong>👽 OKYAK STORE</strong><p>Gift Cards • Games • Produtos Digitais</p></div>
-    <p>© <span id="year"></span> Okyak Store. Todos os direitos reservados.</p>
+
+    <div>
+
+      <strong>
+        👽 OKYAK STORE
+      </strong>
+
+      <p>
+        Gift Cards • Games • Produtos Digitais
+      </p>
+
+    </div>
+
+
+    <p>
+      ©
+      <span id="year"></span>
+      Okyak Store. Todos os direitos reservados.
+    </p>
+
   </footer>
 
-  <div class="overlay" id="overlay"></div>
-  <aside class="cart" id="cart" aria-label="Carrinho">
-    <div class="cart-head"><h2>Seu carrinho</h2><button id="closeCart">✕</button></div>
-    <div id="cartItems" class="cart-items"></div>
-    <div class="cart-empty" id="cartEmpty">Seu carrinho está vazio.</div>
-    <div class="cart-footer">
-      <div class="total"><span>Total</span><strong id="cartTotal">R$ 0,00</strong></div>
-      <button class="btn whatsapp" id="checkout">📱 Pedir pelo WhatsApp</button>
-      <button class="clear" id="clearCart">Limpar carrinho</button>
+
+  <!-- =========================
+       CARRINHO
+  ========================== -->
+
+  <div
+    class="overlay"
+    id="overlay"
+  ></div>
+
+
+  <aside
+    class="cart"
+    id="cart"
+    aria-label="Carrinho"
+  >
+
+    <div class="cart-head">
+
+      <h2>
+        Seu carrinho
+      </h2>
+
+      <button
+        id="closeCart"
+        type="button"
+        aria-label="Fechar carrinho"
+      >
+        ✕
+      </button>
+
     </div>
+
+
+    <div
+      id="cartItems"
+      class="cart-items"
+    ></div>
+
+
+    <div
+      class="cart-empty"
+      id="cartEmpty"
+    >
+      Seu carrinho está vazio.
+    </div>
+
+
+    <div class="cart-footer">
+
+      <div class="total">
+
+        <span>
+          Total
+        </span>
+
+        <strong id="cartTotal">
+          R$ 0,00
+        </strong>
+
+      </div>
+
+
+      <button
+        class="btn whatsapp"
+        id="checkout"
+        type="button"
+      >
+        📱 Pedir pelo WhatsApp
+      </button>
+
+
+      <button
+        class="clear"
+        id="clearCart"
+        type="button"
+      >
+        Limpar carrinho
+      </button>
+
+    </div>
+
   </aside>
 
-  <div class="modal" id="customerModal">
+
+  <!-- =========================
+       MODAL DO CLIENTE
+  ========================== -->
+
+  <div
+    class="modal"
+    id="customerModal"
+  >
+
     <div class="modal-box">
-      <button class="modal-close" id="closeModal">✕</button>
-      <p class="eyebrow">FINALIZAR PEDIDO</p>
-      <h2>Seus dados</h2>
-      <p>Preencha os dados para gerar a mensagem do pedido no WhatsApp.</p>
+
+      <button
+        class="modal-close"
+        id="closeModal"
+        type="button"
+        aria-label="Fechar"
+      >
+        ✕
+      </button>
+
+
+      <p class="eyebrow">
+        FINALIZAR PEDIDO
+      </p>
+
+      <h2>
+        Seus dados
+      </h2>
+
+      <p>
+        Preencha os dados para gerar a mensagem
+        do pedido no WhatsApp.
+      </p>
+
+
       <form id="orderForm">
-        <label>Nome<input required id="customerName" placeholder="Seu nome"></label>
-        <label>WhatsApp<input required id="customerPhone" placeholder="(11) 93075-8262"></label>
-        <label>Observação (opcional)<textarea id="customerNote" rows="3" placeholder="Ex.: Quero receber pelo WhatsApp"></textarea></label>
-        <button class="btn whatsapp" type="submit">Enviar pedido no WhatsApp</button>
+
+        <label>
+          Nome
+
+          <input
+            required
+            id="customerName"
+            type="text"
+            placeholder="Seu nome"
+          >
+
+        </label>
+
+
+        <label>
+          WhatsApp
+
+          <input
+            required
+            id="customerPhone"
+            type="tel"
+            placeholder="(87) 99999-9999"
+          >
+
+        </label>
+
+
+        <label>
+          Observação (opcional)
+
+          <textarea
+            id="customerNote"
+            rows="3"
+            placeholder="Ex.: Quero receber pelo WhatsApp"
+          ></textarea>
+
+        </label>
+
+
+        <button
+          class="btn whatsapp"
+          type="submit"
+        >
+          Enviar pedido no WhatsApp
+        </button>
+
       </form>
+
     </div>
+
   </div>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script src="script.js"></script>
+
+</body>
+</html>
+```
 
   <script src="script.js"></script>
 </body>
