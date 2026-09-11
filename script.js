@@ -124,26 +124,26 @@ const products = [
 
 
   // ==================================================
-  // FREE FIRE — SEM ESTOQUE
+  // Netshoes —  DISPONÍVEL
   // ==================================================
 
   {
-    id: 6,
-    name: "Gift Card Free Fire",
-    category: "Free Fire",
-    value: "R$ 10,00",
-    price: 12.00,
+  id: 6,
+  name: "Gift Card Netshoes",
+  category: "Netshoes",
+  value: "R$ 15,00",
+  price: 17.00,
 
-    image:
-      "https://upload.wikimedia.org/wikipedia/en/9/9a/Garena_Free_Fire_Logo.png",
+  image:
+    "https://upload.wikimedia.org/wikipedia/commons/5/5a/Netshoes_logo.svg",
 
-    icon: "🔥",
+  icon: "👟",
 
-    description:
-      "Gift Card para Free Fire.",
+  description:
+    "Gift Card Netshoes no valor de R$ 15,00.",
 
-    stock: false
-  }
+  stock: true
+}
 
 ];
 
