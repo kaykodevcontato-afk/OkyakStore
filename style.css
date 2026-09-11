@@ -267,3 +267,120 @@ footer{padding:35px 8%;border-top:1px solid var(--line);display:flex;justify-con
   }
 
 }
+
+/* ======================================================
+   IMAGEM DOS PRODUTOS
+   ====================================================== */
+
+.product-image{
+  position:relative;
+  width:100%;
+  height:180px;
+  border-radius:14px;
+  overflow:hidden;
+  background:linear-gradient(135deg,#1d1730,#0d1428);
+  margin-bottom:15px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.product-image img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+  transition:transform .3s ease;
+}
+
+.product:hover .product-image img{
+  transform:scale(1.05);
+}
+
+.product-image .product-icon{
+  width:100%;
+  height:100%;
+  margin:0;
+  border-radius:0;
+}
+
+.stock-badge{
+  position:absolute;
+  top:10px;
+  right:10px;
+  padding:5px 9px;
+  border-radius:999px;
+  background:rgba(0,0,0,.75);
+  border:1px solid rgba(255,255,255,.15);
+  color:#ff8bbd;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.stock-badge.available{
+  color:#61ffae;
+  border-color:rgba(97,255,174,.3);
+}
+
+.unavailable{
+  color:#777;
+  font-size:16px;
+}
+
+.out-of-stock{
+  opacity:.78;
+}
+
+.catalog-empty{
+  grid-column:1/-1;
+  text-align:center;
+  padding:40px;
+  color:var(--muted);
+}
+
+/* ======================================================
+   CONTROLES DO CARRINHO
+   ====================================================== */
+
+.quantity-control{
+  margin-top:8px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.qty{
+  background:var(--panel2);
+  color:#fff;
+  border:1px solid var(--line);
+  width:29px;
+  height:29px;
+  border-radius:7px;
+  cursor:pointer;
+  font-size:17px;
+  display:grid;
+  place-items:center;
+}
+
+.qty:hover{
+  background:var(--purple);
+}
+
+.cart-product-total{
+  text-align:right;
+}
+
+.remove-product{
+  display:block;
+  margin-top:8px;
+  background:none;
+  border:0;
+  color:#ff6b9d;
+  cursor:pointer;
+  font-size:12px;
+}
+
+.remove-product:hover{
+  color:#fff;
+}
